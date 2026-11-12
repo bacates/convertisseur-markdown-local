@@ -51,6 +51,10 @@ Ouvrez ensuite <http://127.0.0.1:8000> dans votre navigateur. Arrêtez le serveu
 
 Après avoir lancé une première fois `demarrer.bat` et installé les dépendances, double-cliquez sur `build_windows.bat`. Le script crée `dist/ConvertisseurMarkdown/ConvertisseurMarkdown.exe` ainsi que ses fichiers nécessaires. Pour démarrer l'application, exécutez ce `.exe` ; le navigateur s'ouvre automatiquement. Gardez le dossier `ConvertisseurMarkdown` entier lorsque vous copiez ou distribuez l'application. Les sorties sont enregistrées dans `conversions/` à côté de l'exécutable. Le premier build télécharge PyInstaller si nécessaire.
 
+## Application de bureau native et portable
+
+Une version native est également disponible : elle ouvre une fenêtre Windows directement, sans navigateur ni serveur web. Pour la construire sur Windows, lancez `build_desktop_windows.bat`. Le script installe PySide6 et PyInstaller dans `.venv-markitdown` et crée `dist/ConvertisseurMarkdownDesktop/ConvertisseurMarkdownDesktop.exe`. Double-cliquez sur cet exécutable pour démarrer. Pour déplacer l'application sur un autre PC Windows, copiez **tout le dossier** `ConvertisseurMarkdownDesktop` ; Python n'a pas besoin d'y être installé. La première construction nécessite Internet pour télécharger les dépendances. Les conversions restent enregistrées dans `conversions/` à côté de l'exécutable. Les fonctions de sélection, glisser-déposer, aperçu, copie et export ZIP sont disponibles dans cette fenêtre. La transcription YouTube contacte Internet uniquement lorsqu'une URL est explicitement soumise.
+
 ## Utilisation
 
 Déposez un ou plusieurs fichiers dans la zone d'import ou cliquez sur **Choisir des fichiers**, puis cliquez sur **Convertir**. Chaque fichier passe en conversion successivement ; l'état de chaque élément, son aperçu, les commandes de copie et le téléchargement `.md` apparaissent dans la liste. Le bouton ZIP rassemble les conversions réussies du lot. Le panneau inférieur affiche les erreurs rencontrées.
