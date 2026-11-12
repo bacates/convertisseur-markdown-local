@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6fb">
+  <title>Convertisseur local en Markdown</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/script.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Accueil"><span class="brand-icon">M↓</span><span>Outils locaux</span></a>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Changer le thème" title="Changer le thème">◐</button>
+    </header>
+    <section class="intro">
+      <div class="eyebrow"><span class="local-dot"></span> TRAITEMENT 100 % LOCAL</div>
+      <h1>Convertisseur local<br><span>en Markdown</span></h1>
+      <p>Transformez vos documents en Markdown, directement sur votre ordinateur.</p>
+    </section>
+
+    <section class="workspace" aria-label="Conversion de fichiers">
+      <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Choisir ou déposer des fichiers">
+        <input id="file-input" type="file" multiple hidden>
+        <div class="upload-icon">↑</div>
+        <strong>Glissez vos fichiers ici ou cliquez pour les sélectionner</strong>
+        <span>Plusieurs fichiers possibles · 100 Mo maximum par fichier</span>
+        <button id="choose-button" class="button secondary" type="button">Choisir des fichiers</button>
+      </div>
+      <div class="format-row"><span>Formats pris en charge</span><span id="extensions" class="extensions">Chargement…</span></div>
+      <div class="queue-head">
+        <div><h2>Vos fichiers</h2><span id="file-count" class="muted">Aucun fichier ajouté</span></div>
+        <button id="clear-button" class="text-button" type="button" disabled>Effacer la liste</button>
+      </div>
+      <div id="file-list" class="file-list" aria-live="polite"></div>
+      <div class="action-row">
+        <button id="convert-button" class="button primary" type="button" disabled><span>✦</span> Convertir</button>
+        <button id="zip-button" class="button secondary" type="button" disabled>Télécharger tout en ZIP <span>↓</span></button>
+      </div>
+    </section>
+
+    <section class="youtube-card" aria-label="Conversion YouTube">
+      <div class="youtube-icon">▶</div>
+      <div><h2>Transcrire une vidéo YouTube</h2><p>MarkItDown récupère la transcription publique via Internet. La vidéo n’est pas téléchargée.</p></div>
+      <div class="youtube-input"><input id="youtube-url" type="url" placeholder="https://www.youtube.com/watch?v=…" aria-label="URL de la vidéo YouTube"><button id="youtube-convert" class="button secondary" type="button">Convertir l’URL</button></div>
+      <div id="youtube-status" class="youtube-status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="preview-panel" class="preview-panel hidden" aria-label="Aperçu Markdown">
+      <div class="preview-head"><div><div class="eyebrow">APERÇU</div><h2 id="preview-title">Document.md</h2></div>
+        <div class="preview-actions"><button id="preview-copy" class="button secondary" type="button">Copier</button><a id="preview-download" class="button secondary" href="#">Télécharger .md</a><button id="close-preview" class="icon-button" type="button" aria-label="Fermer l’aperçu">×</button></div>
+      </div>
+      <pre id="preview-content" class="markdown-content"></pre>
+    </section>
+    <section id="errors-panel" class="errors-panel hidden" aria-live="polite"><h2>À vérifier</h2><ul id="errors-list"></ul></section>
+    <footer><span>Vos fichiers restent sur cet appareil.</span><span>Propulsé par Microsoft MarkItDown</span></footer>
+  </main>
+</body>
+</html>

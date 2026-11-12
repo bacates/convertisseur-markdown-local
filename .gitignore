@@ -1,0 +1,21 @@
+# Environnements Python locaux
+.venv/
+.venv*/
+venv/
+env/
+
+# Fichiers produits et temporaires
+conversions/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Fichiers locaux ou propres au système
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+desktop.ini
