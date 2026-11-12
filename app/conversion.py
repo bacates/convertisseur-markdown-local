@@ -5,6 +5,7 @@ from __future__ import annotations
 import mimetypes
 import re
 import shutil
+import sys
 import uuid
 import zipfile
 from datetime import datetime
@@ -13,7 +14,11 @@ from urllib.parse import urlparse
 
 from markitdown import MarkItDown
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = (
+    Path(sys.executable).resolve().parent
+    if getattr(sys, "frozen", False)
+    else Path(__file__).resolve().parent.parent
+)
 CONVERSIONS_DIR = BASE_DIR / "conversions"
 MAX_FILE_SIZE = 100 * 1024 * 1024
 

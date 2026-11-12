@@ -47,6 +47,10 @@ python run.py
 
 Ouvrez ensuite <http://127.0.0.1:8000> dans votre navigateur. Arrêtez le serveur avec `Ctrl+C` dans la fenêtre du terminal.
 
+## Créer l'exécutable Windows
+
+Après avoir lancé une première fois `demarrer.bat` et installé les dépendances, double-cliquez sur `build_windows.bat`. Le script crée `dist/ConvertisseurMarkdown/ConvertisseurMarkdown.exe` ainsi que ses fichiers nécessaires. Pour démarrer l'application, exécutez ce `.exe` ; le navigateur s'ouvre automatiquement. Gardez le dossier `ConvertisseurMarkdown` entier lorsque vous copiez ou distribuez l'application. Les sorties sont enregistrées dans `conversions/` à côté de l'exécutable. Le premier build télécharge PyInstaller si nécessaire.
+
 ## Utilisation
 
 Déposez un ou plusieurs fichiers dans la zone d'import ou cliquez sur **Choisir des fichiers**, puis cliquez sur **Convertir**. Chaque fichier passe en conversion successivement ; l'état de chaque élément, son aperçu, les commandes de copie et le téléchargement `.md` apparaissent dans la liste. Le bouton ZIP rassemble les conversions réussies du lot. Le panneau inférieur affiche les erreurs rencontrées.
