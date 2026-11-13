@@ -51,8 +51,15 @@ class DesktopApp:
     def __init__(self) -> None:
         self.root = tk.Tk()
         self.root.title("Convertisseur local en Markdown")
-        self.root.geometry("1120x900")
-        self.root.minsize(850, 700)
+        # Dimensionne la fenêtre selon l'écran et garde une marge pour la barre des tâches.
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        width = min(1080, max(760, screen_width - 64))
+        height = min(760, max(520, screen_height - 80))
+        x = max(0, (screen_width - width) // 2)
+        y = max(0, (screen_height - height) // 2)
+        self.root.geometry(f"{width}x{height}+{x}+{y}")
+        self.root.minsize(min(800, width), min(580, height))
 
         self.jobs: list[Job] = []
         self.events: queue.Queue[tuple] = queue.Queue()
