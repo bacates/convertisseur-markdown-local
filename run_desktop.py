@@ -1,5 +1,6 @@
 """Démarre la version native de bureau, sans ouvrir de navigateur."""
 
+import ctypes
 import os
 import sys
 from pathlib import Path
@@ -23,6 +24,15 @@ if getattr(sys, "frozen", False) and sys.platform == "win32":
         [str(path) for path in _dll_directories if path.is_dir()]
         + ([_existing_path] if _existing_path else [])
     )
+    # SetDllDirectory place le dossier Qt avant System32 dans la recherche
+    # Windows, ce que PATH et AddDllDirectory seuls ne garantissent pas.
+    _qt_dll_directory = _bundle_root / "PySide6"
+    if _qt_dll_directory.is_dir():
+        _kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        _kernel32.SetDllDirectoryW.argtypes = [ctypes.c_wchar_p]
+        _kernel32.SetDllDirectoryW.restype = ctypes.c_int
+        if not _kernel32.SetDllDirectoryW(str(_qt_dll_directory)):
+            raise ctypes.WinError(ctypes.get_last_error())
 
 from app.desktop import main
 
