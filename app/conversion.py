@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import mimetypes
+import os
 import re
 import shutil
 import sys
@@ -14,8 +15,11 @@ from urllib.parse import urlparse
 
 from markitdown import MarkItDown
 
+_portable_home = os.environ.get("MARKITDOWN_PORTABLE_HOME")
 BASE_DIR = (
-    Path(sys.executable).resolve().parent
+    Path(_portable_home).resolve()
+    if _portable_home
+    else Path(sys.executable).resolve().parent
     if getattr(sys, "frozen", False)
     else Path(__file__).resolve().parent.parent
 )
